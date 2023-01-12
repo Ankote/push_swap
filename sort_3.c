@@ -19,8 +19,11 @@ void	sort_3(t_stack **stack)
 	temp = *stack;
 	if (check_sort(stack))
 		return ;
-	if (big(stack) == 0 && small(stack) == 1)
-		do_ra(stack);
+	if (big(stack) == 0 && ft_lstsize(*stack) == 2)
+	{
+		do_sa(stack);
+		return ;
+	}
 	if (big(stack) == 0 && small(stack) == 1)
 		do_ra(stack);
 	if (big(stack) == 0 && small(stack) == 2)

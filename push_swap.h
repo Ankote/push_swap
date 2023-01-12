@@ -45,4 +45,7 @@ int					small(t_stack **stack);
 void				sort_3(t_stack **stack_a);
 void				do_sort_5(t_stack **stack_a, t_stack **stack_b);
 int					big(t_stack **stack);
+void				sort_2(t_stack **stack);
+void				do_sort_4(t_stack **stack_a, t_stack **stack_b);
+void				do_sort_5(t_stack **stack_a, t_stack **stack_b);
 #endif

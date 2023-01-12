@@ -49,23 +49,21 @@ int	main(int argc, char **argv)
 	int		i;
 	t_stack	*stack1;
 	t_stack	*stack2;
-
-	stack2 = (t_stack *)malloc(sizeof(t_stack));
+		
+	stack2 = NULL;
 	i = 1;
+	argc = 0;
 	while (argv[i])
 	{
-		ft_lstadd_back(&stack1, ft_lstnew(ft_atoi(argv[i]), 1));
+		ft_lstadd_back(&stack1, ft_lstnew(ft_atoi(argv[i]), i - 1));
 		i++;
 	}
-	if (argc == 4)
-		sort_3(&stack1);
-	if (argc == 6)
-		do_sort_5(&stack1, &stack2);
-	// printf("\n\n____Stack1____\n\n");
-	// while (stack1)
-	// {
-	// 	printf("%d -> %d\n", stack1->index, stack1->value);
-	// 	stack1 = stack1->next;
-	// }
+	do_sort_5(&stack1, &stack2);
+	printf("\n\n____Stack1____\n\n");
+	while (stack1)
+	{
+		printf("%d -> %d\n", stack1->index, stack1->value);
+		stack1 = stack1->next;
+	}
 	return (0);
 }
