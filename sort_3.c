@@ -14,9 +14,6 @@
 
 void	sort_3(t_stack **stack)
 {
-	t_stack	*temp;
-
-	temp = *stack;
 	if (check_sort(stack))
 		return ;
 	if (big(stack) == 0 && ft_lstsize(*stack) == 2)

@@ -15,7 +15,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJCS)
 	@cd libft && $(MAKE)
-	@$(CC) $(OBJCS) $(CFLAGS) $(INCLUDES) -fsanitize=address -o $(NAME)
+	@$(CC) $(OBJCS) $(CFLAGS) $(INCLUDES) -o $(NAME)
 
 %.o:%.c
 	@$(CC)  $(CFLAGS)  -c $<  -o $@

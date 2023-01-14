@@ -24,8 +24,6 @@ void	do_pa(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*temp_b;
 	t_stack	*temp_a;
 
-	if (!*stack_a)
-		return ;
 	temp_a = *stack_a;
 	temp_b = *stack_b;
 	(*stack_b) = (*stack_b)->next;
@@ -40,8 +38,6 @@ void	do_pb(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*temp_b;
 	t_stack	*temp_a;
 
-	if (!*stack_a)
-		return ;
 	temp_b = (*stack_b);
 	temp_a = (*stack_a);
 	*stack_a = (*stack_a)->next;

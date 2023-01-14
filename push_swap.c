@@ -49,8 +49,10 @@ int	main(int argc, char **argv)
 	int		i;
 	t_stack	*stack1;
 	t_stack	*stack2;
+	t_stack	*temp;
 		
 	stack2 = NULL;
+	
 	i = 1;
 	argc = 0;
 	while (argv[i])
@@ -58,12 +60,21 @@ int	main(int argc, char **argv)
 		ft_lstadd_back(&stack1, ft_lstnew(ft_atoi(argv[i]), i - 1));
 		i++;
 	}
-	do_sort_5(&stack1, &stack2);
+	temp = stack1;
+	
+	stack2 = *sort_100(&stack1, &stack2);
+	sort_h(&stack1, &stack2);
 	printf("\n\n____Stack1____\n\n");
+
 	while (stack1)
 	{
 		printf("%d -> %d\n", stack1->index, stack1->value);
 		stack1 = stack1->next;
 	}
+	// while (stack2)
+	// {
+	// 	printf("%d -> %d\n", stack2->index, stack2->value);
+	// 	stack2 = stack2->next;
+	// }
 	return (0);
 }

@@ -71,9 +71,10 @@ int	big(t_stack **stack)
 
 	if (!*stack)
 		return (-1);
-	bg = 0;
-	index = 0;
+	
 	temp = *stack;
+	bg = temp->value;
+	index = 0;
 	while (temp)
 	{
 		if ((temp)->value > bg)
