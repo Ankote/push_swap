@@ -82,25 +82,79 @@ int  *sort_table(t_stack **stack)
 	return (tb);
 }
 
+// t_stack **sort_100(t_stack **stack_a, t_stack **stack_b)
+// {
+// 	int *tb;
+// 	int i;
+// 	t_stack *temp;
+
+// 	i = 0;
+// 	temp = *stack_a;
+// 	tb = sort_table(&temp);
+// 	while (ft_lstsize(*stack_a))
+// 	{
+// 		if ((*stack_a)->value <= tb[i])
+// 		{
+// 			do_pb(stack_a, stack_b);
+// 			do_rb(stack_b);
+// 			i ++;
+			
+// 		}
+// 		else if ((*stack_a)->value <= tb[i + 1])
+// 		{
+// 			do_pb(stack_a, stack_b);
+// 			i ++;
+// 		}
+// 		else
+// 			do_ra(stack_a);
+// 	}
+// 	return(stack_b);
+// }
+
+// void sort_h(t_stack **stack_a, t_stack **stack_b)
+// {
+// 	indexes (*stack_b);
+// 	if (ft_lstsize(*stack_b) && big(stack_b) == 0)
+// 	{
+// 		do_pa(stack_a, stack_b );
+// 		sort_h(stack_a, stack_b);
+// 	}
+// 	else if (ft_lstsize(*stack_b)  && big(stack_b) == ft_lstsize(*stack_b) - 1)
+// 	{
+// 		do_rrb(stack_b);
+// 		sort_h(stack_a, stack_b);
+// 	}
+// 	else
+// 		return ;
+// }
+
 t_stack **sort_100(t_stack **stack_a, t_stack **stack_b)
 {
 	int *tb;
 	int i;
 	t_stack *temp;
+	t_stack *temp2;
 
+	int n = 15;
+	indexes (*stack_b);
 	i = 0;
 	temp = *stack_a;
+	temp2 = *stack_a;
 	tb = sort_table(&temp);
+	int x = ft_lstsize(temp2);
+	int y;
 	while (ft_lstsize(*stack_a))
 	{
-		if ((*stack_a)->value <= tb[i])
+		y = i + n;
+		if(y > x - n)
+			y = x - n;
+		if (ft_lstsize(*stack_a) && (*stack_a)->value <= tb[i])
 		{
 			do_pb(stack_a, stack_b);
 			do_rb(stack_b);
 			i ++;
-			
 		}
-		else if ((*stack_a)->value <= tb[i + 1])
+		else if (ft_lstsize(*stack_a) &&(*stack_a)->value <= tb[y])
 		{
 			do_pb(stack_a, stack_b);
 			i ++;
@@ -114,15 +168,19 @@ t_stack **sort_100(t_stack **stack_a, t_stack **stack_b)
 void sort_h(t_stack **stack_a, t_stack **stack_b)
 {
 	indexes (*stack_b);
-	printf ("%d*",ft_lstsize(*stack_b ));
 	if (ft_lstsize(*stack_b) && big(stack_b) == 0)
 	{
 		do_pa(stack_a, stack_b );
 		sort_h(stack_a, stack_b);
 	}
-	else if (ft_lstsize(*stack_b)  && big(stack_b) == ft_lstsize(*stack_b) - 1)
+	else if (ft_lstsize(*stack_b)  && big(stack_b) >= ft_lstsize(*stack_b) / 2)
 	{
 		do_rrb(stack_b);
+		sort_h(stack_a, stack_b);
+	}
+	else if (ft_lstsize(*stack_b)  && big(stack_b) < ft_lstsize(*stack_b) / 2)
+	{
+		do_rb(stack_b);
 		sort_h(stack_a, stack_b);
 	}
 	else

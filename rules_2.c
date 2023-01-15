@@ -26,7 +26,7 @@ void	do_ra(t_stack **stack_a)
 
 	temp = *stack_a;
 	temp2 = *stack_a;
-	if (!*stack_a || !(*stack_a)->next)
+	if (ft_lstsize(*stack_a) < 2)
 		return ;
 	(*stack_a) = (*stack_a)->next;
 	while (temp->next)
@@ -44,7 +44,7 @@ void	do_rb(t_stack **stack)
 
 	temp = *stack;
 	temp2 = *stack;
-	if (!*stack || !(*stack)->next)
+	if (ft_lstsize(*stack) < 2 || !(*stack)->next)
 		return ;
 	(*stack) = (*stack)->next;
 	while (temp->next)
@@ -52,7 +52,7 @@ void	do_rb(t_stack **stack)
 	temp->next = temp2;
 	temp2->next = NULL;
 	indexes(*stack);
-	ft_putendl_fd("ra", 1);
+	ft_putendl_fd("rb", 1);
 }
 
 void	do_rr(t_stack **stack_a, t_stack **stack_b)
@@ -69,7 +69,7 @@ void	do_rra(t_stack **stack)
 	t_stack	*temp;
 	t_stack	*first;
 
-	if (!*stack || !(*stack)->next)
+	if (ft_lstsize(*stack) < 2 || !(*stack)->next)
 		return ;
 	first = *stack;
 	temp = *stack;
@@ -87,7 +87,7 @@ void	do_rrb(t_stack **stack)
 	t_stack	*temp;
 	t_stack	*first;
 
-	if (!*stack || !(*stack)->next)
+	if (ft_lstsize(*stack) < 2 || !(*stack)->next)
 		return ;
 	first = *stack;
 	temp = *stack;

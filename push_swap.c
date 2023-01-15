@@ -60,17 +60,24 @@ int	main(int argc, char **argv)
 		ft_lstadd_back(&stack1, ft_lstnew(ft_atoi(argv[i]), i - 1));
 		i++;
 	}
+	indexes(stack1);
 	temp = stack1;
-	
+	// do_sort_5(&stack1, &stack2);
 	stack2 = *sort_100(&stack1, &stack2);
+	
 	sort_h(&stack1, &stack2);
-	printf("\n\n____Stack1____\n\n");
-
-	while (stack1)
-	{
-		printf("%d -> %d\n", stack1->index, stack1->value);
-		stack1 = stack1->next;
-	}
+	//do_sort_5(&stack1, &stack2);
+	// while (stack1)
+	// {
+	// 	printf("%d -> %d\n", stack1->index, stack1->value);
+	// 	stack1 = stack1->next;
+	// }
+	// printf("\n\n____Stack1____\n\n");
+	// while (stack1)
+	// {
+	// 	printf("%d -> %d\n", stack1->index, stack1->value);
+	// 	stack1 = stack1->next;
+	// }
 	// while (stack2)
 	// {
 	// 	printf("%d -> %d\n", stack2->index, stack2->value);

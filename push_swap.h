@@ -51,4 +51,5 @@ void				do_sort_5(t_stack **stack_a, t_stack **stack_b);
 int					*sort_table(t_stack **stack);
 t_stack				**sort_100(t_stack **stack_a, t_stack **stack_b);
 void				sort_h(t_stack **stack_a, t_stack **stack_b);
+t_stack				**sort_100b(t_stack **stack_a, t_stack **stack_b);
 #endif
