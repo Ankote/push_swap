@@ -51,7 +51,11 @@ int	main(int argc, char **argv)
 	}
 	indexes(stack1);
 	temp = stack1;
-	
+	if (!check_duplicate(&temp))
+	{
+		printf("nooo");
+		return (0);
+	}
 	push_swap (&stack1, &stack2, i - 1);
 
 	return (0);

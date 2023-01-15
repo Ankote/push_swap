@@ -29,34 +29,26 @@ int  *to_fill_table(t_stack **stack)
 	return (tb);
 }
 
-int ft_intchr(int *tb, int nb)
+int check_duplicate(t_stack **stack)
 {
     int i;
-
-    i = 0;
-    while (tb)
-    {
-        if (nb == tb[i])
-            return (1);
-        i++;
-        tb = tb + i;
-    }
-    return (0);
-}
-
-int check_duplicate(t_stack *stack_a)
-{
+    int j;
+    int size;
     int *tb;
-    int i;
 
+    tb = to_fill_table(stack);
+    size = ft_lstsize(*stack);
     i = 0;
-	tb = to_fill_table(&stack_a);
-    while (tb)
+    while (i < size)
     {
-        if(ft_intchr(tb, tb[i]))
-            return (0);
-        i ++;
-        tb = tb + i;
+        j = i + 1;
+        while(j < size)
+        {
+            if (tb[i] == tb[j])
+                return (0);
+            j++;
+        }
+        i++;
     }
     return (1);
 }
