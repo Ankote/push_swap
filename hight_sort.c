@@ -12,33 +12,6 @@
 
 #include "push_swap.h"
 
-void	do_sort_5(t_stack **stack_a, t_stack **stack_b)
-{
-	if (check_sort(stack_a) && ft_lstsize(*stack_a) == 5)
-		return ;
-	if (small(stack_a) == 0 && ft_lstsize(*stack_a) > 3)
-	{
-		do_pb(stack_a, stack_b);
-		do_sort_5(stack_a, stack_b);
-	}
-	else if (small(stack_a) <= 2 && ft_lstsize(*stack_a) > 3)
-	{
-		do_ra(stack_a);
-		do_sort_5(stack_a, stack_b);
-	}
-	else if (small(stack_a) > 2 && ft_lstsize(*stack_a) > 3)
-	{
-		do_rra(stack_a);
-		do_sort_5(stack_a, stack_b);
-	}
-	else if (ft_lstsize(*stack_a) <= 4)
-	{
-		sort_3(stack_a);
-		while (ft_lstsize(*stack_b))
-			do_pa(stack_a, stack_b);
-	}
-}
-
 int	*ft_sort_int_tab(int *tab, int size)
 {
 	int	i;
@@ -82,87 +55,33 @@ int  *sort_table(t_stack **stack)
 	return (tb);
 }
 
-// t_stack **sort_100(t_stack **stack_a, t_stack **stack_b)
-// {
-// 	int *tb;
-// 	int i;
-// 	t_stack *temp;
-
-// 	i = 0;
-// 	temp = *stack_a;
-// 	tb = sort_table(&temp);
-// 	while (ft_lstsize(*stack_a))
-// 	{
-// 		if ((*stack_a)->value <= tb[i])
-// 		{
-// 			do_pb(stack_a, stack_b);
-// 			do_rb(stack_b);
-// 			i ++;
-			
-// 		}
-// 		else if ((*stack_a)->value <= tb[i + 1])
-// 		{
-// 			do_pb(stack_a, stack_b);
-// 			i ++;
-// 		}
-// 		else
-// 			do_ra(stack_a);
-// 	}
-// 	return(stack_b);
-// }
-
-// void sort_h(t_stack **stack_a, t_stack **stack_b)
-// {
-// 	indexes (*stack_b);
-// 	if (ft_lstsize(*stack_b) && big(stack_b) == 0)
-// 	{
-// 		do_pa(stack_a, stack_b );
-// 		sort_h(stack_a, stack_b);
-// 	}
-// 	else if (ft_lstsize(*stack_b)  && big(stack_b) == ft_lstsize(*stack_b) - 1)
-// 	{
-// 		do_rrb(stack_b);
-// 		sort_h(stack_a, stack_b);
-// 	}
-// 	else
-// 		return ;
-// }
-
-t_stack **sort_100(t_stack **stack_a, t_stack **stack_b)
+t_stack **butterfly_push(t_stack **stack_a, t_stack **stack_b, int base)
 {
-	int *tb;
-	int i;
-	t_stack *temp;
-	t_stack *temp2;
+	t_vars vars;
 
-	int n = 15;
-	indexes (*stack_b);
-	i = 0;
-	temp = *stack_a;
-	temp2 = *stack_a;
-	tb = sort_table(&temp);
-	int x = ft_lstsize(temp2);
-	int y;
+	vars.i = 0;
+	vars.tb = sort_table(stack_a);
+	vars.x = ft_lstsize(*stack_a);
 	while (ft_lstsize(*stack_a))
 	{
-		y = i + n;
-		if(y > x - n)
-			y = x - n;
-		if (ft_lstsize(*stack_a) && (*stack_a)->value <= tb[i])
+		vars.y = vars.i + base;
+		if(vars.y > vars.x - base)
+			vars.y = vars.x - base;
+		if (ft_lstsize(*stack_a) && (*stack_a)->value <= vars.tb[vars.i])
 		{
 			do_pb(stack_a, stack_b);
 			do_rb(stack_b);
-			i ++;
+			vars.i ++;
 		}
-		else if (ft_lstsize(*stack_a) &&(*stack_a)->value <= tb[y])
+		else if (ft_lstsize(*stack_a) &&(*stack_a)->value <= vars.tb[vars.y])
 		{
 			do_pb(stack_a, stack_b);
-			i ++;
+			vars.i ++;
 		}
 		else
 			do_ra(stack_a);
 	}
-	return(stack_b);
+	return(free (vars.tb), stack_b);
 }
 
 void sort_h(t_stack **stack_a, t_stack **stack_b)

@@ -6,7 +6,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 ARC = ar -rc
 
-FILES = push_swap.c  utils1.c utils2.c rules_2.c rules3.c sort_3.c sort_5.c
+FILES = push_swap.c  utils1.c utils2.c rules_0.c rules_1.c rules_2.c low_sort.c \
+		hight_sort.c check_numbers.c
 
 OBJCS = $(FILES:.c=.o)
 

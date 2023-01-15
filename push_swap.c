@@ -12,36 +12,25 @@
 
 #include "push_swap.h"
 
-void	swap(t_stack **stack)
+int push_swap(t_stack **stack_a, t_stack **stack_b, int count)
 {
-	int	tmp;
-
-	if (ft_lstsize(*stack) <= 1)
-		return ;
-	tmp = (*stack)->value;
-	(*stack)->value = (*stack)->next->value;
-	(*stack)->next->value = tmp;
-}
-
-void	do_sa(t_stack **stack_a)
-{
-	swap(stack_a);
-	indexes(*stack_a);
-	ft_putstr_fd("sa\n", 1);
-}
-
-void	do_sb(t_stack **stack_b)
-{
-	swap(stack_b);
-	indexes(*stack_b);
-	ft_putstr_fd("sb\n", 1);
-}
-
-void	do_ss(t_stack **stack_a, t_stack **stack_b)
-{
-	swap(stack_a);
-	swap(stack_b);
-	ft_putstr_fd("ss\n", 1);
+	if (check_sort(stack_a))
+		return(0);
+	if (count <= 3)
+		sort_3(stack_a);
+	else if (count <= 5)
+		do_sort_5(stack_a, stack_b);
+	else if (count <= 100)
+	{
+		*stack_b = *butterfly_push(stack_a, stack_b, 15);
+		sort_h(stack_a, stack_b);
+	}
+	else
+	{
+		*stack_b = *butterfly_push(stack_a, stack_b, 30);
+		sort_h(stack_a, stack_b);	
+	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -62,26 +51,8 @@ int	main(int argc, char **argv)
 	}
 	indexes(stack1);
 	temp = stack1;
-	// do_sort_5(&stack1, &stack2);
-	stack2 = *sort_100(&stack1, &stack2);
 	
-	sort_h(&stack1, &stack2);
-	//do_sort_5(&stack1, &stack2);
-	// while (stack1)
-	// {
-	// 	printf("%d -> %d\n", stack1->index, stack1->value);
-	// 	stack1 = stack1->next;
-	// }
-	// printf("\n\n____Stack1____\n\n");
-	// while (stack1)
-	// {
-	// 	printf("%d -> %d\n", stack1->index, stack1->value);
-	// 	stack1 = stack1->next;
-	// }
-	// while (stack2)
-	// {
-	// 	printf("%d -> %d\n", stack2->index, stack2->value);
-	// 	stack2 = stack2->next;
-	// }
+	push_swap (&stack1, &stack2, i - 1);
+
 	return (0);
 }
