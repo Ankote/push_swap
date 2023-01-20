@@ -46,7 +46,7 @@ static int	strend(char const *s1, char const *set)
 
 	i = ft_strlen(s1) - 1;
 	cpt = 0;
-	while (s1[i] && i >= 0)
+	while (s1[i])
 	{
 		j = 0;
 		test = 0;

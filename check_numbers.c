@@ -45,10 +45,43 @@ int check_duplicate(t_stack **stack)
         while(j < size)
         {
             if (tb[i] == tb[j])
-                return (0);
+            {
+                ft_putendl_fd("ERROR!\nthere is number duplicated!.", 1);
+                return (free (tb), 0);
+            }
+            
             j++;
         }
         i++;
+    }
+    return (free (tb), 1);
+}
+
+
+int chech_is_number(int ac, char **av)
+{
+    int i;
+    int j;
+
+    i = 1;
+    while (i < ac)
+    {
+        j = 0;
+        while (av[i][j])
+        {
+            if (!ft_isdigit(av[i][j]) && av[i][j] != '-' && av[i][j] != '+')
+            {
+                ft_putendl_fd("ERROR!\nyou can put only numbers!.", 1);
+                return (0);
+            }
+            if (ft_isdigit(av[i][j]) && av[i][j + 1] && !ft_isdigit(av[i][j + 1]))
+            {
+                ft_putendl_fd("ERROR!\nyou can put only numbers!.", 1);
+                return (0);
+            }
+            j ++;
+        }
+        i ++;
     }
     return (1);
 }

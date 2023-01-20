@@ -42,7 +42,7 @@ void	sort_3(t_stack **stack)
 void	do_sort_5(t_stack **stack_a, t_stack **stack_b)
 {
 	if (check_sort(stack_a) && ft_lstsize(*stack_a) == 5)
-		return ;
+		return (free (stack_b)) ;
 	if (small(stack_a) == 0 && ft_lstsize(*stack_a) > 3)
 	{
 		do_pb(stack_a, stack_b);

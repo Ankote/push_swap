@@ -45,7 +45,6 @@ void				do_rrb(t_stack **stack);
 void				do_rrr(t_stack **stack_a, t_stack **stack_b);
 void				do_pa(t_stack **stack_a, t_stack **stack_b);
 void				do_pb(t_stack **stack_a, t_stack **stack_b);
-void				do_pp(t_stack **stack_a, t_stack **stack_b);
 void				indexes(t_stack *stack);
 int					check_sort(t_stack **stack);
 int					small(t_stack **stack);
@@ -58,4 +57,5 @@ int					*sort_table(t_stack **stack);
 t_stack				**butterfly_push(t_stack **stack_a, t_stack **stack_b, int base);
 void				sort_h(t_stack **stack_a, t_stack **stack_b);
 int					check_duplicate(t_stack **stack);
+int					chech_is_number(int ac, char **av);
 #endif
