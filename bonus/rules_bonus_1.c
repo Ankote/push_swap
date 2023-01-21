@@ -26,15 +26,12 @@ void	do_rb(t_stack **stack)
 		temp = temp->next;
 	temp->next = temp2;
 	temp2->next = NULL;
-	indexes(*stack);
 }
 
 void	do_rr(t_stack **stack_a, t_stack **stack_b)
 {
 	do_ra(stack_a);
 	do_rb(stack_b);
-	indexes(*stack_a);
-	indexes(*stack_b);
 }
 
 void	do_rra(t_stack **stack)
@@ -51,7 +48,6 @@ void	do_rra(t_stack **stack)
 	(*stack) = temp->next;
 	(*stack)->next = first;
 	temp->next = NULL;
-	indexes(*stack);
 }
 
 void	do_rrb(t_stack **stack)
@@ -68,12 +64,10 @@ void	do_rrb(t_stack **stack)
 	(*stack) = temp->next;
 	(*stack)->next = first;
 	temp->next = NULL;
-	indexes(*stack);
 }
 
 void	do_rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	do_rra(stack_a);
 	do_rrb(stack_b);
-	indexes(*stack_a);
 }

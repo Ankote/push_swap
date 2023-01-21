@@ -23,6 +23,12 @@ void				do_pb(t_stack **stack_a, t_stack **stack_b);
 t_stack	            *ft_lstnew(int value, int index);
 void	            ft_lstadd_back(t_stack **lst, t_stack *new);
 int                 ft_lstsize(t_stack *lst);
-void	            indexes(t_stack *stack);
 int                 check_sort(t_stack **stack);
+int					check_duplicate(t_stack **stack);
+int					check_is_number(int ac, char **av);
+char				**read_instructions();
+int					do_instracts(char **p, t_stack **stack_a, t_stack **stack_b);
+void 				free_stack(t_stack **stack);
+void 				free_duble(char **p);
 # endif
+

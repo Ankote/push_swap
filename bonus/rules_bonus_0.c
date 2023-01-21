@@ -26,13 +26,11 @@ void	swap(t_stack **stack)
 void	do_sa(t_stack **stack_a)
 {
 	swap(stack_a);
-	indexes(*stack_a);
 }
 
 void	do_sb(t_stack **stack_b)
 {
 	swap(stack_b);
-	indexes(*stack_b);
 }
 
 void	do_ss(t_stack **stack_a, t_stack **stack_b)
@@ -56,5 +54,4 @@ void	do_ra(t_stack **stack_a)
 		temp = temp->next;
 	temp->next = temp2;
 	temp2->next = NULL;
-	indexes(*stack_a);
 }

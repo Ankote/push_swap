@@ -25,15 +25,6 @@ t_stack	*ft_lstnew(int value, int index)
 	return (new);
 }
 
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
-{
-	if (new)
-	{
-		new->next = *lst;
-		*lst = new;
-	}
-}
-
 void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*temp;
@@ -64,13 +55,16 @@ int	ft_lstsize(t_stack *lst)
 	return (count);
 }
 
-t_stack	*ft_lstlast(t_stack *lst)
+int	check_sort(t_stack **stack)
 {
-	while (lst)
+	t_stack	*temp;
+
+	temp = *stack;
+	while (temp && (temp)->next)
 	{
-		if (!lst->next)
-			return (lst);
-		lst = lst->next;
+		if (temp->value > temp->next->value)
+			return (0);
+		temp = temp->next;
 	}
-	return (lst);
+	return (1);
 }
