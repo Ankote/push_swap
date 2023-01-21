@@ -12,44 +12,38 @@
 
 #include "checker.h"
 
-int  *to_fill_table(t_stack **stack)
+int  *to_fill_table(int ac, char **av)
 {
-	t_stack *temp;
 	int *tb;
 	int i;
+    int j;
 
 	i = 0;
-	temp = *stack;
-	tb = malloc(ft_lstsize(*stack));
-	while (temp)
-	{
-		tb[i++] = (temp)->value;
-		temp = (temp)->next;
-	}
+    j = 1;
+	tb = malloc(ac - 1);
+	while (i < ac - 1)
+		tb[i++] = ft_atoi(av[j++]);
 	return (tb);
 }
 
-int check_duplicate(t_stack **stack)
+int check_duplicate(int ac, char **av)
 {
     int i;
     int j;
-    int size;
     int *tb;
 
-    tb = to_fill_table(stack);
-    size = ft_lstsize(*stack);
+    tb = to_fill_table(ac, av);
     i = 0;
-    while (i < size)
+    while (i < ac - 1)
     {
         j = i + 1;
-        while(j < size)
+        while(j < ac - 1)
         {
             if (tb[i] == tb[j])
             {
                 ft_putendl_fd("Error", 1);
                 return (free (tb), 0);
             }
-            
             j++;
         }
         i++;

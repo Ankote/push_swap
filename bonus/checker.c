@@ -10,7 +10,6 @@ void free_duble(char **p)
 	free (p);
 }
 
-
 void free_stack(t_stack **stack)
 {
 	t_stack *tmp;
@@ -41,7 +40,6 @@ static void	fill_stack(int ac, char **av, t_stack **stack)
 	}
 }
 
-
 int main(int argc, char **argv)
 {
     char **ins;
@@ -49,11 +47,10 @@ int main(int argc, char **argv)
 	t_stack *stack_b;
 	
 	stack_b = NULL;
-	if (argc < 2 || !check_is_number(argc, argv))	
-		exit (0);
+	if (argc < 2 || !check_is_number(argc, argv)
+		|| !check_duplicate(argc, argv))	
+			exit (1);
 	fill_stack(argc, argv, &stack_a);
-	if(!check_duplicate(&stack_a))
-		exit (0);
 	ins = read_instructions();
 	do_instracts(ins, &stack_a, &stack_b);
 	if (check_sort(&stack_a) && !ft_lstsize(stack_b))

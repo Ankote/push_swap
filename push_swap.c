@@ -53,18 +53,18 @@ int main(int argc, char **argv)
 	int i;
 	t_stack *stack1;
 	t_stack *stack2;
-	t_stack *temp;
 	stack2 = NULL;
 
 	i = 1;
+	if (!check_duplicate(argc, argv) || !chech_is_number(argc, argv))
+		exit (1);
 	while (argv[i] && argc > 1)
 	{
 		ft_lstadd_back(&stack1, ft_lstnew(ft_atoi(argv[i]), i - 1));
 		i++;
 	}
 	indexes(stack1);
-	temp = stack1;
-	if (!check_duplicate(&temp) || !chech_is_number(argc, argv))
+	if (!check_duplicate(argc, argv) || !chech_is_number(argc, argv))
 	{
 		free_stack(&stack1);
 		free_stack(&stack2);
