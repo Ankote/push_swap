@@ -9,7 +9,7 @@ ARC = ar -rc
 
 FILES = push_swap.c  utils1.c utils2.c rules_0.c rules_1.c rules_2.c low_sort.c \
 		hight_sort.c check_numbers.c
-FILES_B = bonus/checker.c bonus/utils_bonus_1.c bonus/rules_bonus_0.c \
+FILES_B = bonus/checker_bonus.c bonus/utils_bonus_1.c bonus/rules_bonus_0.c \
 		bonus/rules_bonus_1.c bonus/rules_bonus_2.c bonus/check_numbers_bonus.c\
 		bonus/checker_utils_1.c
 
