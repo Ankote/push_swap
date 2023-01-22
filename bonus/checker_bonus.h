@@ -1,5 +1,5 @@
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 #include <fcntl.h>
 # include "get_next_line/get_next_line.h"
 # include "../libft/libft.h"
@@ -24,10 +24,9 @@ t_stack	            *ft_lstnew(int value, int index);
 void	            ft_lstadd_back(t_stack **lst, t_stack *new);
 int                 ft_lstsize(t_stack *lst);
 int                 check_sort(t_stack **stack);
-int 				check_duplicate(int ac, char **av);
-int					check_is_number(int ac, char **av);
 char				**read_instructions();
 int					do_instracts(char **p, t_stack **stack_a, t_stack **stack_b);
+int 				check_numbers(int ac, char **av);
 void 				free_stack(t_stack **stack);
 void 				free_duble(char **p);
 # endif

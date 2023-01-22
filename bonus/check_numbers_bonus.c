@@ -10,45 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
-
-int  *to_fill_table(int ac, char **av)
-{
-	int *tb;
-	int i;
-    int j;
-
-	i = 0;
-    j = 1;
-	tb = malloc(ac - 1);
-	while (i < ac - 1)
-		tb[i++] = ft_atoi(av[j++]);
-	return (tb);
-}
+#include "checker_bonus.h"
 
 int check_duplicate(int ac, char **av)
 {
     int i;
     int j;
-    int *tb;
 
-    tb = to_fill_table(ac, av);
-    i = 0;
-    while (i < ac - 1)
+    i = 1;
+    while (av[i])
     {
         j = i + 1;
-        while(j < ac - 1)
+        while(av[j] && ac > 1)
         {
-            if (tb[i] == tb[j])
+            if (ft_atoi(av[i]) == ft_atoi(av[j]))
             {
-                ft_putendl_fd("Error", 1);
-                return (free (tb), 0);
+                ft_putendl_fd("ERROR!\nthere is number duplicated!.", 1);
+                return (0);
             }
+            
             j++;
         }
         i++;
     }
-    return (free (tb), 1);
+    return (1);
 }
 
 
@@ -77,5 +62,38 @@ int check_is_number(int ac, char **av)
         }
         i ++;
     }
+    return (1);
+}
+
+int check_limits(int ac, char **av)
+{
+    int i;
+
+    i = 1;
+    while (av[i] && ac > 1)
+    {
+        if (ft_atoi(av[i]) > INT_MAX)
+        {
+            ft_putendl_fd("ERROR!\nExceeded the upper limit!", 1);
+            return (0);
+        }
+        if (ft_atoi(av[i]) < INT_MIN)
+        {
+            ft_putendl_fd("ERROR!\nExceeded the lower limit!", 1);
+            return (0);
+        }
+        i ++;
+    }
+    return (1);
+}
+
+int check_numbers(int ac, char **av)
+{
+    if (!check_duplicate(ac, av))
+        return (0);
+    if(!check_is_number(ac, av))
+        return (0);
+    if (!check_limits(ac, av))
+        return (0);
     return (1);
 }

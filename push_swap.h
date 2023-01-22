@@ -56,6 +56,5 @@ void				do_sort_5(t_stack **stack_a, t_stack **stack_b);
 int					*sort_table(t_stack **stack);
 t_stack				**butterfly_push(t_stack **stack_a, t_stack **stack_b, int base);
 void				sort_h(t_stack **stack_a, t_stack **stack_b);
-int 				check_duplicate(int ac, char **av);
-int					chech_is_number(int ac, char **av);
+int 				check_numbers(int ac, char **av);
 #endif

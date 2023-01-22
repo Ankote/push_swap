@@ -1,4 +1,4 @@
-#include "checker.h"
+#include "checker_bonus.h"
 
 void free_duble(char **p)
 {
@@ -47,8 +47,7 @@ int main(int argc, char **argv)
 	t_stack *stack_b;
 	
 	stack_b = NULL;
-	if (argc < 2 || !check_is_number(argc, argv)
-		|| !check_duplicate(argc, argv))	
+	if (argc < 2 || !check_numbers(argc, argv))	
 			exit (1);
 	fill_stack(argc, argv, &stack_a);
 	ins = read_instructions();

@@ -1,4 +1,4 @@
-# include "checker.h"
+#include "checker_bonus.h"
 
 
 int check_instructs(char *ptr)

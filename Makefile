@@ -25,14 +25,14 @@ all : $(NAME)
 
 $(NAME) : $(OBJCS)
 	@cd libft && $(MAKE)
-	@$(CC) $(OBJCS) $(CFLAGS) -fsanitize=address $(INCLUDES) -o $(NAME)
+	@$(CC)  $(OBJCS) $(CFLAGS) $(INCLUDES) -o $(NAME)
 
 bonus : $(NAME_B)
 
 $(NAME_B) : $(OBJCS_B)
 	@cd libft && $(MAKE)
 	@cd bonus/get_next_line && $(MAKE)
-	@$(CC) $(OBJCS_B) $(CFLAGS) -fsanitize=address $(INCLUDES_B) -o $(NAME_B)
+	@$(CC) $(OBJCS_B) $(CFLAGS)  $(INCLUDES_B) -o $(NAME_B)
 
 %.o:%.c
 	@$(CC)  $(CFLAGS)  -c $<  -o $@

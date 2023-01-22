@@ -25,11 +25,6 @@ int push_swap(t_stack **stack_a, t_stack **stack_b, int count)
 		*stack_b = *butterfly_push(stack_a, stack_b, 15);
 		sort_h(stack_a, stack_b);
 	}
-	else
-	{
-		*stack_b = *butterfly_push(stack_a, stack_b, 30);
-		sort_h(stack_a, stack_b);
-	}
 	return (0);
 }
 
@@ -48,29 +43,30 @@ void free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
+void fill_stack(int ac, char **av, t_stack **stack)
+{
+	int i;
+
+	i = 1;
+	while (av[i] && ac > 1)
+	{
+		ft_lstadd_back(stack, ft_lstnew(ft_atoi(av[i]), i - 1));
+		i++;
+	}
+}
+
 int main(int argc, char **argv)
 {
 	int i;
 	t_stack *stack1;
 	t_stack *stack2;
 	stack2 = NULL;
-
+	
 	i = 1;
-	if (!check_duplicate(argc, argv) || !chech_is_number(argc, argv))
+	if (argc < 2 || !check_numbers(argc, argv))
 		exit (1);
-	while (argv[i] && argc > 1)
-	{
-		ft_lstadd_back(&stack1, ft_lstnew(ft_atoi(argv[i]), i - 1));
-		i++;
-	}
+	fill_stack(argc, argv, &stack1);
 	indexes(stack1);
-	if (!check_duplicate(argc, argv) || !chech_is_number(argc, argv))
-	{
-		free_stack(&stack1);
-		free_stack(&stack2);
-		return (0);
-	}
-
 	push_swap(&stack1, &stack2, i - 1);
 	free_stack(&stack1);
 	free_stack(&stack2);
