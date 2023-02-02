@@ -66,7 +66,5 @@ int main(int argc, char **argv)
 	fill_stack(argc, argv, &stack1);
 	indexes(stack1);
 	push_swap(&stack1, &stack2, argc - 1);
-	free_stack(&stack1);
-	free_stack(&stack2);
 	return (0);
 }
