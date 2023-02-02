@@ -57,17 +57,15 @@ void fill_stack(int ac, char **av, t_stack **stack)
 
 int main(int argc, char **argv)
 {
-	int i;
 	t_stack *stack1;
 	t_stack *stack2;
 	stack2 = NULL;
 	
-	i = 1;
 	if (argc < 2 || !check_numbers(argc, argv))
 		exit (1);
 	fill_stack(argc, argv, &stack1);
 	indexes(stack1);
-	push_swap(&stack1, &stack2, i - 1);
+	push_swap(&stack1, &stack2, argc - 1);
 	free_stack(&stack1);
 	free_stack(&stack2);
 	return (0);
