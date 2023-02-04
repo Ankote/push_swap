@@ -10,34 +10,31 @@ void free_duble(char **p)
 	free (p);
 }
 
-void free_stack(t_stack **stack)
+
+char **args(char **av)
 {
-	t_stack *tmp;
+    int i;
+    char *t;
+    char *res;
+    char **p;
 
-	if (!stack || !(*stack))
-		return;
-	while (*stack)
+    i = 1;
+    res = ft_calloc(1, 1);
+    while (av[i])
+    {
+		
+		t = ft_strjoin(av[i], " ");
+       res = join_free(res, t);
+       free (t);
+       i ++;
+    }
+    p = ft_split(res, ' ');
+	if (!p[0])
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
+		ft_putendl_fd("Error!", 1);
+		exit (0);
 	}
-	*stack = NULL;
-}
-
-static void	fill_stack(int ac, char **av, t_stack **stack)
-{
-	int i;
-
-	i = 1;
-	if (ac > 1)
-	{
-		while (av[i])
-		{
-			ft_lstadd_back(stack, ft_lstnew(ft_atoi(av[i]), i - 1));
-			i++;
-		}
-	}
+    return (free(res), p);
 }
 
 int main(int argc, char **argv)
@@ -45,11 +42,16 @@ int main(int argc, char **argv)
     char **ins;
 	t_stack *stack_a;
 	t_stack *stack_b;
+	char **p;
+	int i;
 	
+	i = -1;
 	stack_b = NULL;
-	if (argc < 2 || !check_numbers(argc, argv))	
-			exit (1);
-	fill_stack(argc, argv, &stack_a);
+	p = args(argv);
+	if (argc < 2 || !check_numbers(p) || !check_n(argv))
+		exit (1);
+	while (p[++i])
+		ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(p[i]), 0));
 	ins = read_instructions();
 	do_instracts(ins, &stack_a, &stack_b);
 	if (check_sort(&stack_a) && !ft_lstsize(stack_b))
@@ -57,7 +59,6 @@ int main(int argc, char **argv)
 	else
 		ft_putendl_fd("KO", 1);
 	free_duble (ins);
-	free_stack(&stack_a);
-	free_stack(&stack_b);	
+	free_duble(p);
 	return (0);
 	}

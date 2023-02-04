@@ -24,7 +24,7 @@ size_t	ft_strlen_l(const char *s)
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr_l(const char *s, int c)
 {
 	size_t	i;
 
@@ -40,7 +40,7 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_l(char const *s1, char const *s2)
 {
 	int		i;
 	int		j;

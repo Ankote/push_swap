@@ -73,7 +73,7 @@ t_stack **butterfly_push(t_stack **stack_a, t_stack **stack_b, int base)
 			do_rb(stack_b);
 			vars.i ++;
 		}
-		else if (ft_lstsize(*stack_a) &&(*stack_a)->value <= vars.tb[vars.y])
+		else if (ft_lstsize(*stack_a) && (*stack_a)->value <= vars.tb[vars.y])
 		{
 			do_pb(stack_a, stack_b);
 			vars.i ++;

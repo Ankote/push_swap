@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int check_duplicate(int ac, char **av)
+int check_duplicate(char **av)
 {
     int i;
     int j;
@@ -21,7 +21,7 @@ int check_duplicate(int ac, char **av)
     while (av[i])
     {
         j = i + 1;
-        while(av[j] && ac > 1)
+        while(av[j])
         {
             if (ft_atoi(av[i]) == ft_atoi(av[j]))
             {
@@ -37,16 +37,13 @@ int check_duplicate(int ac, char **av)
 }
 
 
-int check_is_number(int ac, char **av)
+int check_is_number(char **av, int i, int j)
 {
-    int i;
-    int j;
-
-    i = 1;
-    while (i < ac)
+    i = -1;
+    while (av[++i])
     {
-        j = 0;
-        while (av[i][j])
+        j = -1;
+        while (av[i][++j])
         {
             if (!ft_isdigit(av[i][j]) && av[i][j] != '-' && av[i][j] != '+')
             {
@@ -58,19 +55,23 @@ int check_is_number(int ac, char **av)
                 ft_putendl_fd("ERROR!\nyou can put only numbers!.", 1);
                 return (0);
             }
-            j ++;
+            if ((av[i][j] == '-' || av[i][j] == '+') && (!av[i][j + 1]\
+            || !ft_isdigit(av[i][j + 1])))
+            {
+                ft_putendl_fd("ERROR!\nyou can put only numbers!.", 1);
+                return (0);
+            }      
         }
-        i ++;
     }
     return (1);
 }
 
-int check_limits(int ac, char **av)
+int check_limits(char **av)
 {
     int i;
 
-    i = 1;
-    while (av[i] && ac > 1)
+    i = 0;
+    while (av[i])
     {
         if (ft_atoi(av[i]) > INT_MAX)
         {
@@ -87,13 +88,43 @@ int check_limits(int ac, char **av)
     return (1);
 }
 
-int check_numbers(int ac, char **av)
+int check_n(char **av)
 {
-    if (!check_duplicate(ac, av))
-        return (0);
-    if(!check_is_number(ac, av))
-        return (0);
-    if (!check_limits(ac, av))
-        return (0);
+    int i;
+    int j;
+    int check;
+
+    i = 1;
+   
+    while (av[i])
+    {
+        check = 0;
+        j = -1;
+        while (av[i][++j])
+        {
+            if (av[i][j])
+            {
+                  if (ft_isdigit(av[i][j]))
+                    check = 1;
+            }
+        }
+        if (!check)
+        {
+            ft_putendl_fd("ERROR!\nyou can put only numbers!.", 1);
+            return (0);
+        }      
+        i ++;
+    }
+    return (1);
+}
+
+int check_numbers(char **av)
+{
+    if(!check_is_number(av, -1, -1))
+        exit(0);
+    if (!check_limits(av))
+       exit(0);
+    if (!check_duplicate(av))
+        exit (0);
     return (1);
 }

@@ -30,6 +30,8 @@ $(NAME) : $(OBJCS)
 bonus : $(NAME_B)
 
 $(NAME_B) : $(OBJCS_B)
+	@rm -fr libft/*.o && rm -fr libft/*.a
+	@rm -fr bonus/get_next_line/*.o && rm -fr bonus/get_next_line/*.a
 	@cd libft && $(MAKE)
 	@cd bonus/get_next_line && $(MAKE)
 	@$(CC) $(OBJCS_B) $(CFLAGS) $(INCLUDES_B) -o $(NAME_B)
@@ -47,4 +49,4 @@ fclean : clean
 	@rm -fr $(NAME)
 	@rm -fr $(NAME_B)
 
-re :fclean all bonus
+re :fclean all

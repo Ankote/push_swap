@@ -15,7 +15,7 @@ char	*join_free(char *sta_buff, char *buff)
 {
 	char	*temp;
 
-	temp = ft_strjoin(sta_buff, buff);
+	temp = ft_strjoin_l(sta_buff, buff);
 	free(sta_buff);
 	return (temp);
 }
@@ -43,7 +43,7 @@ char	*ft_read_line(int fd, char *res)
 			return (free(buff), free(res), NULL);
 		buff[bytes] = '\0';
 		res = join_free(res, buff);
-		if (ft_strchr(buff, '\n'))
+		if (ft_strchr_l(buff, '\n'))
 			break ;
 	}
 	return (free(buff), res);

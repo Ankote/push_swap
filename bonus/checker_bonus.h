@@ -26,8 +26,9 @@ int                 ft_lstsize(t_stack *lst);
 int                 check_sort(t_stack **stack);
 char				**read_instructions();
 int					do_instracts(char **p, t_stack **stack_a, t_stack **stack_b);
-int 				check_numbers(int ac, char **av);
+int 				check_numbers(char **av);
 void 				free_stack(t_stack **stack);
 void 				free_duble(char **p);
+int 				check_n(char **av);
 # endif
 
