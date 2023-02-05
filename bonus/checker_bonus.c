@@ -1,55 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aankote <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/05 12:17:29 by aankote           #+#    #+#             */
+/*   Updated: 2023/02/05 12:17:38 by aankote          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "checker_bonus.h"
 
-void free_duble(char **p)
+void	free_duble(char **p)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (p[i])
-		free (p[i++]);
-	free (p);
+		free(p[i++]);
+	free(p);
 }
 
-
-char **args(char **av)
+char	**args(char **av)
 {
-    int i;
-    char *t;
-    char *res;
-    char **p;
+	int		i;
+	char	*t;
+	char	*res;
+	char	**p;
 
-    i = 1;
-    res = ft_calloc(1, 1);
-    while (av[i])
-    {
-		
+	i = 1;
+	res = ft_calloc(1, 1);
+	while (av[i])
+	{
 		t = ft_strjoin(av[i], " ");
-       res = join_free(res, t);
-       free (t);
-       i ++;
-    }
-    p = ft_split(res, ' ');
+		res = join_free(res, t);
+		free(t);
+		i++;
+	}
+	p = ft_split(res, ' ');
 	if (!p[0])
 	{
 		ft_putendl_fd("Error!", 1);
-		exit (0);
+		exit(0);
 	}
-    return (free(res), p);
+	return (free(res), p);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    char **ins;
-	t_stack *stack_a;
-	t_stack *stack_b;
-	char **p;
-	int i;
-	
+	char	**ins;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	char	**p;
+	int		i;
+
 	i = -1;
 	stack_b = NULL;
 	p = args(argv);
 	if (argc < 2 || !check_numbers(p) || !check_n(argv))
-		exit (1);
+		exit(1);
 	while (p[++i])
 		ft_lstadd_back(&stack_a, ft_lstnew(ft_atoi(p[i]), 0));
 	ins = read_instructions();
@@ -58,7 +67,7 @@ int main(int argc, char **argv)
 		ft_putendl_fd("OK", 1);
 	else
 		ft_putendl_fd("KO", 1);
-	free_duble (ins);
+	free_duble(ins);
 	free_duble(p);
 	return (0);
-	}
+}

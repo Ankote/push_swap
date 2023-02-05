@@ -41,9 +41,9 @@ void	do_ss(t_stack **stack_a, t_stack **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);
+	indexes(*stack_b);
 	ft_putstr_fd("ss\n", 1);
 }
-
 
 void	do_ra(t_stack **stack_a)
 {

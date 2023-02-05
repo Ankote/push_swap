@@ -80,4 +80,5 @@ void	do_rrr(t_stack **stack_a, t_stack **stack_b)
 	do_rra(stack_a);
 	do_rrb(stack_b);
 	indexes(*stack_a);
+	ft_putendl_fd("rrr", 1);
 }

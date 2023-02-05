@@ -26,9 +26,9 @@ int	*ft_sort_int_tab(int *tab, int size)
 		{
 			if (tab[i] > tab[j])
 			{
-			swap = tab[j];
-			tab[j] = tab[i];
-			tab[i] = swap;
+				swap = tab[j];
+				tab[j] = tab[i];
+				tab[i] = swap;
 			}
 			j++;
 		}
@@ -37,11 +37,11 @@ int	*ft_sort_int_tab(int *tab, int size)
 	return (tab);
 }
 
-int  *sort_table(t_stack **stack)
+int	*fill_table_with_sort(t_stack **stack)
 {
-	t_stack *temp;
-	int *tb;
-	int i;
+	t_stack	*temp;
+	int		*tb;
+	int		i;
 
 	i = 0;
 	temp = *stack;
@@ -55,49 +55,49 @@ int  *sort_table(t_stack **stack)
 	return (tb);
 }
 
-t_stack **butterfly_push(t_stack **stack_a, t_stack **stack_b, int base)
+void	butterfly_push(t_stack **stack_a, t_stack **stack_b, int base)
 {
-	t_vars vars;
+	t_vars	vars;
 
 	vars.i = 0;
-	vars.tb = sort_table(stack_a);
+	vars.tb = fill_table_with_sort(stack_a);
 	vars.x = ft_lstsize(*stack_a);
 	while (ft_lstsize(*stack_a))
 	{
 		vars.y = vars.i + base;
-		if(vars.y > vars.x - base)
+		if (vars.y > vars.x - base)
 			vars.y = vars.x - base;
 		if (ft_lstsize(*stack_a) && (*stack_a)->value <= vars.tb[vars.i])
 		{
 			do_pb(stack_a, stack_b);
 			do_rb(stack_b);
-			vars.i ++;
+			vars.i++;
 		}
 		else if (ft_lstsize(*stack_a) && (*stack_a)->value <= vars.tb[vars.y])
 		{
 			do_pb(stack_a, stack_b);
-			vars.i ++;
+			vars.i++;
 		}
 		else
 			do_ra(stack_a);
 	}
-	return(free (vars.tb), stack_b);
+	free(vars.tb);
 }
 
-void sort_h(t_stack **stack_a, t_stack **stack_b)
+void	sort_h(t_stack **stack_a, t_stack **stack_b)
 {
-	indexes (*stack_b);
+	indexes(*stack_b);
 	if (ft_lstsize(*stack_b) && big(stack_b) == 0)
 	{
-		do_pa(stack_a, stack_b );
+		do_pa(stack_a, stack_b);
 		sort_h(stack_a, stack_b);
 	}
-	else if (ft_lstsize(*stack_b)  && big(stack_b) >= ft_lstsize(*stack_b) / 2)
+	else if (ft_lstsize(*stack_b) && big(stack_b) >= ft_lstsize(*stack_b) / 2)
 	{
 		do_rrb(stack_b);
 		sort_h(stack_a, stack_b);
 	}
-	else if (ft_lstsize(*stack_b)  && big(stack_b) < ft_lstsize(*stack_b) / 2)
+	else if (ft_lstsize(*stack_b) && big(stack_b) < ft_lstsize(*stack_b) / 2)
 	{
 		do_rb(stack_b);
 		sort_h(stack_a, stack_b);
