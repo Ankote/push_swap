@@ -16,7 +16,7 @@ int	check_duplicate(char **av)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (av[i])
 	{
 		j = i + 1;

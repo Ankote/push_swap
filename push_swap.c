@@ -44,11 +44,6 @@ int	push_swap(t_stack **stack_a, t_stack **stack_b, int count)
 	else if (count <= 100)
 	{
 		butterfly_push(stack_a, stack_b, 15);
-		while (*stack_b)
-		{
-			printf("%d\n", (*stack_b)->value);
-			*stack_b = (*stack_b)->next;
-		}
 		sort_h(stack_a, stack_b);
 	}
 	else
